@@ -1,1 +1,41 @@
-# Restaurant-Management-System-
+
+# Restaurant Management System by Tarjovan 💥
+
+def show_menu():
+    print("\n📜 Menu:")
+    print("1. Pizza - ₹250")
+    print("2. Burger - ₹150")
+    print("3. Pasta - ₹200")
+    print("4. Coffee - ₹100")
+
+def take_order():
+    order = []
+    prices = {1: 250, 2: 150, 3: 200, 4: 100}
+    while True:
+        show_menu()
+        choice = int(input("Enter item number (0 to finish): "))
+        if choice == 0:
+            break
+        elif choice in prices:
+            qty = int(input("Enter quantity: "))
+            order.append((choice, qty))
+        else:
+            print("Invalid choice. Try again.")
+    return order
+
+def generate_bill(order):
+    prices = {1: 250, 2: 150, 3: 200, 4: 100}
+    items = {1: "Pizza", 2: "Burger", 3: "Pasta", 4: "Coffee"}
+    total = 0
+    print("\n🧾 Bill:")
+    for item, qty in order:
+        cost = prices[item] * qty
+        total += cost
+        print(f"{items[item]} x {qty} = ₹{cost}")
+    print(f"\nTotal Amount: ₹{total}")
+    print("🙏 Thank you for visiting!")
+
+# Main Program
+print("🍴 Welcome to Tarjovan's Restaurant 🍴")
+order = take_order()
+generate_bill(order)
